@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Award, Cpu, LineChart, ArrowDown, Download, Handshake, ChevronRight } from "lucide-react";
 import BackgroundAnimation from "./BackgroundAnimation";
 import { Button } from "@/components/ui/button";
+import Typed from "@/lib/typed";
 
 export default function HeroSection() {
   const typedTextRef = useRef<HTMLSpanElement>(null);
@@ -529,13 +530,30 @@ export default function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 1.4 }}
       >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="text-blue-400 flex flex-col items-center"
+        <motion.span 
+          className="text-[#00bfff] text-sm mb-2 font-medium"
+          animate={{ opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
         >
-          <span className="text-xs text-gray-400 mb-1">Scroll down</span>
-          <ArrowDown className="w-5 h-5" />
+          Explore More
+        </motion.span>
+        <motion.div
+          animate={{ 
+            y: [0, 10, 0],
+          }}
+          transition={{ 
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <a 
+            href="#about" 
+            className="flex items-center justify-center w-9 h-9 rounded-full bg-[#051630] border border-[#00bfff] text-[#00bfff] hover:bg-[#00bfff] hover:bg-opacity-10 transition-colors duration-300"
+            aria-label="Scroll to About section"
+          >
+            <ArrowDown className="w-5 h-5" />
+          </a>
         </motion.div>
       </motion.div>
     </section>
