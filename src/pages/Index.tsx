@@ -1,5 +1,6 @@
 
 import HeroSection from "@/components/HeroSection";
+import { ContactSection } from "@/components/ContactSection";
 import { motion } from "framer-motion";
 
 const Index = () => {
@@ -11,6 +12,7 @@ const Index = () => {
       className="min-h-screen bg-gradient-to-b from-[#052037] to-[#0a1929]"
     >
       <HeroSection />
+      <ContactSection />
     </motion.div>
   );
 };
