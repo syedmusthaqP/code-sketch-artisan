@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { 
   Briefcase, 
@@ -598,11 +597,11 @@ export default function TimelineSection() {
                         {event.icon}
                       </div>
                       
-                      {/* Animated ring */}
+                      {/* Animated ring - Fixed error by using borderColor opacity instead of borderOpacity */}
                       <motion.div 
-                        className="absolute inset-0 rounded-full border-2 border-[#00bfff] border-opacity-0"
+                        className="absolute inset-0 rounded-full border-2 border-[#00bfff]"
                         animate={{ 
-                          borderOpacity: [0, 0.7, 0],
+                          borderColor: ["rgba(0, 191, 255, 0)", "rgba(0, 191, 255, 0.7)", "rgba(0, 191, 255, 0)"],
                           scale: [0.8, 1.2, 0.8]
                         }}
                         transition={{ 
