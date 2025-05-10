@@ -1,10 +1,10 @@
-
 import { Button } from '@/components/ui/button';
 import { scrollToSection } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FileText, Code, TrendingUp, Download, MessageCircle, Star, Zap } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import Typed from '@/lib/typed';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 export default function HeroSection() {
   const typedRef = useRef<HTMLSpanElement>(null);
@@ -170,12 +170,12 @@ export default function HeroSection() {
               &lt;/&gt; <span className="text-[#0ea5e9]">Hello, I'm</span>
             </motion.div>
             
-            {/* Name with enhanced effects */}
+            {/* Name with enhanced effects - REPLACED JOHN SMITH WITH SYED MUSTHAQ */}
             <div className="relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-[#00c3ff]/30 to-[#c961de]/30 blur-lg opacity-50"></div>
               <h1 className="relative text-6xl md:text-7xl lg:text-8xl font-bold mb-2 mt-0">
-                <span className="text-white drop-shadow-[0_0_10px_rgba(0,195,255,0.3)]">John</span> 
-                <span className="bg-gradient-to-r from-[#00c3ff] via-[#4f8efc] to-[#c961de] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(0,195,255,0.3)]">Smith</span>
+                <span className="text-white drop-shadow-[0_0_10px_rgba(0,195,255,0.3)]">Syed</span> 
+                <span className="bg-gradient-to-r from-[#00c3ff] via-[#4f8efc] to-[#c961de] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(0,195,255,0.3)]">Musthaq</span>
               </h1>
               
               {/* Animated underline for name with enhanced glow */}
@@ -396,14 +396,14 @@ export default function HeroSection() {
             </div>
           </motion.div>
           
-          {/* Right Content - Profile Image replaced with a card */}
+          {/* Right Content - Replaced Innovation card with profile image */}
           <motion.div 
             className="lg:w-5/12 flex justify-center relative"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            {/* Enhanced Card instead of an image */}
+            {/* Enhanced Card with profile image */}
             <motion.div 
               className="relative max-w-md w-full"
               whileHover={{ scale: 1.03 }}
@@ -427,59 +427,50 @@ export default function HeroSection() {
                 <div className="relative z-10 overflow-hidden rounded-lg bg-[#071525] p-8">
                   <div className="absolute inset-0 bg-gradient-to-tr from-[#00c3ff]/5 to-[#c961de]/5 z-0 mix-blend-overlay"></div>
                   
-                  {/* Card Content */}
-                  <div className="relative z-20">
-                    <div className="flex justify-center mb-6">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-r from-[#00c3ff] to-[#c961de] flex items-center justify-center">
-                        <div className="w-14 h-14 rounded-full bg-[#071525] flex items-center justify-center">
-                          <Star className="h-8 w-8 text-[#00c3ff]" />
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <h3 className="text-center text-xl font-bold text-white mb-2">Innovation Specialist</h3>
-                    <p className="text-center text-[#8acdff] mb-6">Transform your business with cutting-edge innovation strategies</p>
-                    
-                    {/* Feature items */}
-                    <div className="space-y-4 mb-6">
-                      {[
-                        { icon: <FileText className="h-4 w-4" />, text: "Strategic Planning" },
-                        { icon: <Code className="h-4 w-4" />, text: "AI Integration" },
-                        { icon: <TrendingUp className="h-4 w-4" />, text: "Business Growth" },
-                        { icon: <Star className="h-4 w-4" />, text: "Innovative Solutions" },
-                      ].map((item, i) => (
-                        <div 
-                          key={i}
-                          className="flex items-center bg-[#0c2035] p-3 rounded-lg border border-[#1e4976]/30"
-                        >
-                          <div className="w-8 h-8 rounded-full bg-[#00c3ff]/10 flex items-center justify-center mr-3">
-                            <div className="text-[#00c3ff]">{item.icon}</div>
-                          </div>
-                          <span className="text-[#8acdff]">{item.text}</span>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <Button 
-                      className="w-full bg-gradient-to-r from-[#00c3ff] to-[#c961de] hover:opacity-90 transition-opacity text-white shadow-lg shadow-[#00c3ff]/20"
+                  {/* Card Content - Profile Image */}
+                  <div className="relative z-20 flex flex-col items-center">
+                    <motion.div
+                      className="mb-6 relative"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.7 }}
                     >
-                      Explore Services
-                    </Button>
+                      {/* Decorative border around image */}
+                      <div className="absolute -inset-3 bg-gradient-to-r from-[#00c3ff] to-[#c961de] rounded-full opacity-70"></div>
+                      
+                      {/* Profile image */}
+                      <div className="relative rounded-full overflow-hidden border-4 border-[#071525]" style={{ width: '280px', height: '280px' }}>
+                        <img 
+                          src="/lovable-uploads/dece566b-b408-4aec-b9e0-0ecec84de7fb.png" 
+                          alt="Syed Musthaq" 
+                          className="w-full h-full object-cover"
+                        />
+                        
+                        {/* Animated glow overlay */}
+                        <motion.div 
+                          className="absolute inset-0 bg-gradient-to-tr from-[#00c3ff]/10 to-[#c961de]/10"
+                          animate={{ 
+                            opacity: [0.3, 0.6, 0.3],
+                          }}
+                          transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
+                        />
+                      </div>
+                    </motion.div>
+                    
+                    {/* Animated light effects */}
+                    <motion.div 
+                      className="absolute top-0 w-[200%] h-full transform -rotate-45 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+                      initial={{ left: "-200%" }}
+                      animate={{ 
+                        left: ["100%", "-200%"],
+                        transition: { duration: 5, repeat: Infinity, repeatDelay: 2 }
+                      }}
+                    />
                   </div>
-                  
-                  {/* Animated light effects */}
-                  <motion.div 
-                    className="absolute top-0 w-[200%] h-full transform -rotate-45 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-                    initial={{ left: "-200%" }}
-                    animate={{ 
-                      left: ["100%", "-200%"],
-                      transition: { duration: 5, repeat: Infinity, repeatDelay: 2 }
-                    }}
-                  />
                 </div>
               </div>
               
-              {/* Enhanced decoration element */}
+              {/* Enhanced decoration elements */}
               <motion.div 
                 className="absolute -top-2 -right-2 w-12 h-12"
                 animate={{ rotate: [0, 360] }}
