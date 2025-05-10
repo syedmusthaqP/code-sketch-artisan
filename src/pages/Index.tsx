@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import HeroSection from "@/components/HeroSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Navbar } from "@/components/Navbar";
+import AboutSection from "@/components/AboutSection";
 import { motion } from "framer-motion";
 
 const Index = () => {
@@ -40,6 +41,7 @@ const Index = () => {
     >
       <Navbar activeSection={activeSection} />
       <HeroSection />
+      <AboutSection />
       <ContactSection />
     </motion.div>
   );
