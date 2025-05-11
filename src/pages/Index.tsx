@@ -5,6 +5,7 @@ import { ContactSection } from "@/components/ContactSection";
 import { Navbar } from "@/components/Navbar";
 import AboutSection from "@/components/AboutSection";
 import TimelineSection from "@/components/TimelineSection";
+import SkillsSection from "@/components/SkillsSection";
 import { motion } from "framer-motion";
 
 const Index = () => {
@@ -43,6 +44,7 @@ const Index = () => {
       <Navbar activeSection={activeSection} />
       <HeroSection />
       <AboutSection />
+      <SkillsSection />
       <TimelineSection />
       <ContactSection />
     </motion.div>
