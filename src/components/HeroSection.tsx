@@ -5,6 +5,7 @@ import { FileText, Code, TrendingUp, Download, MessageCircle, Star, Zap } from '
 import { useEffect, useRef, useState } from 'react';
 import Typed from '@/lib/typed';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { GradientText } from './ui/gradient-text';
 
 export default function HeroSection() {
   const typedRef = useRef<HTMLSpanElement>(null);
@@ -110,13 +111,13 @@ export default function HeroSection() {
   };
   
   return (
-    <section id="about" className="min-h-screen relative overflow-hidden pt-12 pb-12 bg-gradient-to-b from-[#052037] to-[#0a1929]">
+    <section id="about" className="relative overflow-hidden pt-28 pb-20 bg-gradient-to-b from-[#052037] to-[#0a1929]">
       {/* Background light effects */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxyYWRpYWxHcmFkaWVudCBpZD0iZ3JhZDEiIGN4PSIyMCUiIGN5PSIyMCUiIHI9IjUwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0icmdiYSgwLCAxOTUsIDI1NSwgMC4xKSIgLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9InJnYmEoMCwgMTk1LCAyNTUsIDApIiAvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMwNzE1MjUiIC8+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkMSkiIC8+PC9zdmc+')]"></div>
       
       <div className="container mx-auto px-6 h-full relative z-10">
         {/* Main Content */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-10 h-full">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-16 h-full">
           {/* Left Content */}
           <motion.div 
             className="lg:w-7/12"
@@ -126,7 +127,7 @@ export default function HeroSection() {
           >
             {/* Header Highlight Box with enhanced glow */}
             <motion.div 
-              className="p-[2px] rounded-lg mb-6 relative overflow-hidden"
+              className="p-[2px] rounded-lg mb-10 relative overflow-hidden"
               variants={headerBoxVariants}
               initial="initial"
               animate="animate"
@@ -170,7 +171,7 @@ export default function HeroSection() {
               &lt;/&gt; <span className="text-[#0ea5e9]">Hello, I'm</span>
             </motion.div>
             
-            {/* Name with enhanced effects - REPLACED JOHN SMITH WITH SYED MUSTHAQ */}
+            {/* Name with enhanced effects */}
             <div className="relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-[#00c3ff]/30 to-[#c961de]/30 blur-lg opacity-50"></div>
               <h1 className="relative text-6xl md:text-7xl lg:text-8xl font-bold mb-2 mt-0">
@@ -396,109 +397,133 @@ export default function HeroSection() {
             </div>
           </motion.div>
           
-          {/* Right Content - Replaced Innovation card with profile image */}
+          {/* Right Content - Vertical Rectangle Profile Card */}
           <motion.div 
-            className="lg:w-5/12 flex justify-center relative"
+            className="lg:w-5/12 flex justify-center relative h-full"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            {/* Enhanced Card with profile image */}
+            {/* Vertical Rectangle Profile Card */}
             <motion.div 
-              className="relative max-w-md w-full"
+              className="relative max-w-sm w-full h-[550px]"
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.3 }}
             >
-              {/* Light glow behind card */}
+              {/* Professional gradient lighting effect behind card */}
               <motion.div 
-                className="absolute -inset-4 bg-gradient-to-tr from-[#00c3ff]/30 to-[#c961de]/30 rounded-xl blur-xl"
+                className="absolute -inset-6 bg-gradient-to-tr from-[#00c3ff]/40 to-[#c961de]/40 rounded-xl blur-2xl"
                 animate={{ 
-                  opacity: [0.4, 0.7, 0.4],
+                  opacity: [0.5, 0.8, 0.5],
                   scale: [0.98, 1.02, 0.98],
-                  transition: { duration: 3, repeat: Infinity }
+                  transition: { duration: 4, repeat: Infinity }
                 }}
               />
               
-              {/* Card border with light effect */}
-              <div className="p-[2px] rounded-lg relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#00c3ff] to-[#c961de] opacity-70 rounded-lg"></div>
+              {/* Card border with professional light effect */}
+              <div className="p-[2px] rounded-2xl relative overflow-hidden h-full">
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#00c3ff] to-[#c961de] opacity-70 rounded-2xl"></div>
                 
                 {/* Card Container */}
-                <div className="relative z-10 overflow-hidden rounded-lg bg-[#071525] p-8">
+                <div className="relative z-10 overflow-hidden rounded-2xl bg-[#071525] h-full">
                   <div className="absolute inset-0 bg-gradient-to-tr from-[#00c3ff]/5 to-[#c961de]/5 z-0 mix-blend-overlay"></div>
                   
-                  {/* Card Content - Profile Image */}
-                  <div className="relative z-20 flex flex-col items-center">
+                  {/* Professional Vertical Profile Image */}
+                  <div className="relative h-full flex flex-col items-center justify-center p-4">
                     <motion.div
-                      className="mb-6 relative"
+                      className="w-full h-full relative"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.7 }}
                     >
-                      {/* Decorative border around image */}
-                      <div className="absolute -inset-3 bg-gradient-to-r from-[#00c3ff] to-[#c961de] rounded-full opacity-70"></div>
+                      {/* Inner decorative border */}
+                      <motion.div 
+                        className="absolute inset-2 rounded-xl border border-white/10 z-20 pointer-events-none"
+                        animate={{
+                          boxShadow: ["0 0 10px rgba(0,195,255,0.3)", "0 0 20px rgba(0,195,255,0.6)", "0 0 10px rgba(0,195,255,0.3)"]
+                        }}
+                        transition={{ duration: 3, repeat: Infinity }}
+                      />
                       
-                      {/* Profile image */}
-                      <div className="relative rounded-full overflow-hidden border-4 border-[#071525]" style={{ width: '280px', height: '280px' }}>
+                      {/* Profile image with gradient overlay */}
+                      <div className="relative h-full rounded-xl overflow-hidden">
                         <img 
                           src="/lovable-uploads/dece566b-b408-4aec-b9e0-0ecec84de7fb.png" 
                           alt="Syed Musthaq" 
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover object-center"
                         />
                         
-                        {/* Animated glow overlay */}
+                        {/* Professional gradient light overlay */}
                         <motion.div 
-                          className="absolute inset-0 bg-gradient-to-tr from-[#00c3ff]/10 to-[#c961de]/10"
+                          className="absolute inset-0 bg-gradient-to-tr from-[#00c3ff]/10 via-transparent to-[#c961de]/20"
                           animate={{ 
-                            opacity: [0.3, 0.6, 0.3],
+                            opacity: [0.4, 0.7, 0.4],
                           }}
-                          transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
+                          transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
                         />
+                        
+                        {/* Top light reflection */}
+                        <motion.div 
+                          className="absolute top-0 left-0 right-0 h-[20%] bg-gradient-to-b from-white/20 to-transparent"
+                          animate={{
+                            opacity: [0.3, 0.5, 0.3]
+                          }}
+                          transition={{ duration: 3, repeat: Infinity }}
+                        />
+                        
+                        {/* Bottom vignette */}
+                        <div className="absolute bottom-0 left-0 right-0 h-[30%] bg-gradient-to-t from-[#071525]/90 to-transparent">
+                          <div className="absolute bottom-0 left-0 right-0 p-4 text-center">
+                            <GradientText className="text-lg font-semibold">Syed Musthaq</GradientText>
+                          </div>
+                        </div>
                       </div>
+                      
+                      {/* Corner gradient reflections */}
+                      <motion.div 
+                        className="absolute top-2 right-2 w-20 h-20 bg-gradient-to-br from-[#00c3ff]/40 to-transparent rounded-full blur-xl"
+                        animate={{
+                          opacity: [0.3, 0.6, 0.3],
+                          scale: [1, 1.2, 1]
+                        }}
+                        transition={{ duration: 4, repeat: Infinity }}
+                      />
+                      <motion.div 
+                        className="absolute bottom-2 left-2 w-16 h-16 bg-gradient-to-tr from-[#c961de]/40 to-transparent rounded-full blur-xl"
+                        animate={{
+                          opacity: [0.2, 0.5, 0.2],
+                          scale: [1, 1.2, 1]
+                        }}
+                        transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+                      />
                     </motion.div>
-                    
-                    {/* Animated light effects */}
-                    <motion.div 
-                      className="absolute top-0 w-[200%] h-full transform -rotate-45 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-                      initial={{ left: "-200%" }}
-                      animate={{ 
-                        left: ["100%", "-200%"],
-                        transition: { duration: 5, repeat: Infinity, repeatDelay: 2 }
-                      }}
-                    />
                   </div>
                 </div>
               </div>
               
-              {/* Enhanced decoration elements */}
+              {/* Professional light beam effect */}
               <motion.div 
-                className="absolute -top-2 -right-2 w-12 h-12"
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              >
-                <svg width="100%" height="100%" viewBox="0 0 50 50" fill="none">
-                  <circle cx="25" cy="25" r="23" stroke="#00c3ff" strokeWidth="0.5" strokeDasharray="4 4" />
-                  <circle cx="25" cy="25" r="16" stroke="#c961de" strokeWidth="0.5" strokeOpacity="0.7" />
-                  <circle cx="25" cy="25" r="8" fill="#00c3ff" fillOpacity="0.2" />
-                </svg>
-              </motion.div>
-              
+                className="absolute -top-5 -right-5 w-[300%] h-2 bg-[#00c3ff]/20 blur-lg rotate-45"
+                animate={{
+                  translateY: ["0%", "1000%"],
+                  opacity: [0, 0.5, 0]
+                }}
+                transition={{ duration: 5, repeat: Infinity, repeatDelay: 3 }}
+              />
               <motion.div 
-                className="absolute -bottom-3 -left-3 w-20 h-20"
-                animate={{ rotate: [360, 0] }}
-                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              >
-                <svg width="100%" height="100%" viewBox="0 0 80 80" fill="none">
-                  <rect x="10" y="10" width="60" height="60" stroke="#c961de" strokeWidth="0.5" strokeDasharray="5 5" />
-                  <circle cx="40" cy="40" r="20" stroke="#00c3ff" strokeWidth="0.5" strokeOpacity="0.7" />
-                </svg>
-              </motion.div>
+                className="absolute -top-5 -left-5 w-[300%] h-1 bg-[#c961de]/20 blur-lg rotate-45"
+                animate={{
+                  translateY: ["0%", "2000%"],
+                  opacity: [0, 0.5, 0]
+                }}
+                transition={{ duration: 7, repeat: Infinity, repeatDelay: 2 }}
+              />
             </motion.div>
           </motion.div>
         </div>
       </div>
       
-      {/* Enhanced animated circuits and grid overlays */}
+      {/* Background animations and elements */}
       <div className="absolute inset-0 z-0 opacity-20">
         <motion.div
           className="absolute inset-0 z-0"

@@ -31,6 +31,8 @@ const Index = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initialize on mount
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
