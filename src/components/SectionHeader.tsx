@@ -1,7 +1,5 @@
 
-import React from 'react';
 import { motion } from "framer-motion";
-import { GradientText } from '@/components/ui/gradient-text';
 
 interface SectionHeaderProps {
   title: string;
@@ -19,13 +17,13 @@ const gradientMap = {
   default: "from-[#00c3ff] to-[#c961de]",
 };
 
-const SectionHeader: React.FC<SectionHeaderProps> = ({ 
+const SectionHeader = ({ 
   title, 
   subtitle, 
   align = "center",
   accent = "default",
   centered = true
-}) => {
+}: SectionHeaderProps) => {
   const alignmentClasses = {
     left: "text-left",
     center: "text-center mx-auto",
@@ -35,7 +33,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   const gradient = gradientMap[accent];
   
   return (
-    <div className={`mb-16 max-w-2xl ${alignmentClasses[align]} ${centered ? 'mx-auto' : ''}`}>
+    <div className={`mb-12 max-w-2xl ${alignmentClasses[align]} ${centered ? 'mx-auto' : ''}`}>
       <div className="relative inline-block">
         <motion.h2 
           className="text-3xl md:text-4xl font-bold mb-4 relative inline-block"
