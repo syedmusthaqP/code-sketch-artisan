@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { 
   Briefcase, 
@@ -357,9 +358,9 @@ export default function TimelineSection() {
             </div>
           </div>
           
-          {/* Detailed event cards */}
+          {/* Detailed event cards - MODIFIED TO INCLUDE ALL TIMELINE EVENTS */}
           <div className="space-y-16 mt-24">
-            {[timelineEvents[0], timelineEvents[4]].map((event, index) => (
+            {timelineEvents.map((event, index) => (
               <motion.div 
                 key={index}
                 className="relative"
@@ -382,7 +383,7 @@ export default function TimelineSection() {
                         <div className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${event.color} flex-shrink-0 flex items-center justify-center shadow-lg`}>
                           <div className="absolute inset-0 rounded-2xl bg-[#0a192f] opacity-80"></div>
                           <div className={`relative text-5xl font-bold ${event.textColor}`}>
-                            {index === 0 ? '01' : '05'}
+                            {`0${index + 1}`}
                           </div>
                           
                           {/* Corner icon */}
@@ -439,7 +440,7 @@ export default function TimelineSection() {
                           </h5>
                           
                           <div className="grid grid-cols-1 gap-4">
-                            {event.achievements.map((achievement, achIndex) => (
+                            {event.achievements && event.achievements.map((achievement, achIndex) => (
                               <motion.div 
                                 key={achIndex}
                                 className="flex items-start gap-3 group"
@@ -631,9 +632,9 @@ export default function TimelineSection() {
             </div>
           </div>
           
-          {/* Mobile detailed cards */}
+          {/* Mobile detailed cards - MODIFIED TO SHOW ALL EVENTS */}
           <div className="mt-16 space-y-12">
-            {[timelineEvents[0], timelineEvents[4]].map((event, index) => (
+            {timelineEvents.map((event, index) => (
               <motion.div 
                 key={index}
                 className={`relative rounded-xl overflow-hidden border border-gray-800 shadow-lg bg-gradient-to-br from-[#0a192f] to-[#051630]`}
@@ -703,3 +704,4 @@ export default function TimelineSection() {
     </section>
   );
 }
+
