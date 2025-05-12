@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { 
   Briefcase, 
@@ -11,6 +12,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import SectionHeader from "./SectionHeader";
+import { ScrollArea } from "./ui/scroll-area";
 
 // Define the type for skill icons to prevent type errors
 type SkillIconsType = {
@@ -129,231 +131,186 @@ export default function TimelineSection() {
           accent="teal"
         />
         
-        {/* Desktop Timeline - NEW CARD DESIGN */}
+        {/* Desktop Timeline - Enhanced visibility with ScrollArea for horizonal timeline */}
         <div className="hidden md:block max-w-6xl mx-auto">
           {/* Cards in a row with connector lines */}
-          <div className="relative pb-12 flex flex-col">
+          <div className="relative pb-12">
             {/* Main timeline row */}
-            <div className="relative flex justify-center mb-10">
-              <div className="flex space-x-6 md:space-x-16 lg:space-x-24 items-center">
-                {timelineEvents.map((event, index) => (
-                  <motion.div 
-                    key={index}
-                    className="relative"
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.15 }}
-                  >
-                    {/* Card */}
+            <div className="relative mb-10">
+              <ScrollArea className="w-full" orientation="horizontal">
+                <div className="flex px-4 space-x-6 md:space-x-12 lg:space-x-16 py-8 min-w-max">
+                  {timelineEvents.map((event, index) => (
                     <motion.div 
-                      className={`relative w-60 rounded-lg shadow-lg bg-[#0a192f] border border-gray-800 overflow-hidden transform transition-all duration-300`}
-                      whileHover={{ 
-                        y: -5, 
-                        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2)",
-                        borderColor: "#00bfff"
-                      }}
+                      key={index}
+                      className="relative"
+                      initial={{ opacity: 0, y: 50 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.15 }}
                     >
-                      {/* Card header */}
-                      <div className={`px-5 py-3 bg-gradient-to-r ${event.color}`}>
-                        <h4 className="text-xl font-poppins font-bold text-white mb-0 leading-tight tracking-wider">
-                          {event.year}
-                        </h4>
-                      </div>
-                      
-                      {/* Card content */}
-                      <div className="p-5">
-                        {/* Icon circle - Positioned slightly above, overlapping the header */}
-                        <div className="absolute -top-5 right-5 w-12 h-12 rounded-full border-4 border-[#0a192f] bg-gradient-to-br from-[#051630] to-[#0a192f] flex items-center justify-center shadow-lg transform -translate-y-1/3">
-                          <div className={`w-full h-full rounded-full bg-gradient-to-br ${event.color} flex items-center justify-center`}>
-                            {event.icon}
-                          </div>
+                      {/* Card */}
+                      <motion.div 
+                        className={`relative w-72 rounded-lg shadow-lg bg-[#0a192f] border border-gray-800 overflow-hidden transform transition-all duration-300`}
+                        whileHover={{ 
+                          y: -5, 
+                          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2)",
+                          borderColor: "#00bfff"
+                        }}
+                      >
+                        {/* Card header */}
+                        <div className={`px-5 py-3 bg-gradient-to-r ${event.color}`}>
+                          <h4 className="text-xl font-poppins font-bold text-white mb-0 leading-tight tracking-wider">
+                            {event.year}
+                          </h4>
                         </div>
                         
-                        <h4 className="text-xl font-poppins font-bold mb-1 mt-1 text-white">{event.title}</h4>
-                        <p className={`${event.textColor} text-sm mb-4 font-medium`}>{event.subtitle}</p>
-                        
-                        {/* Enhanced visual connector dots between cards */}
-                        {index < timelineEvents.length - 1 && (
-                          <div className="absolute -right-12 md:-right-20 lg:-right-28 top-1/2 transform -translate-y-1/2 flex space-x-2">
-                            {/* Animated connector dots with different sizes and effects */}
-                            <motion.div 
-                              className={`w-3 h-3 rounded-full bg-gradient-to-r ${event.color} relative`}
-                              animate={{ 
-                                boxShadow: ["0 0 0px rgba(0, 191, 255, 0.2)", "0 0 8px rgba(0, 191, 255, 0.8)", "0 0 0px rgba(0, 191, 255, 0.2)"],
-                                scale: [1, 1.3, 1]
-                              }}
-                              transition={{ duration: 2, repeat: Infinity, delay: 0 }}
-                            >
-                              {/* Inner dot */}
-                              <motion.div 
-                                className="absolute inset-1 rounded-full bg-white" 
-                                animate={{ opacity: [0.4, 0.8, 0.4] }}
-                                transition={{ duration: 2, repeat: Infinity, delay: 0 }}
-                              />
-                            </motion.div>
-                            
-                            {/* Larger center dot */}
-                            <motion.div 
-                              className={`w-4 h-4 rounded-full bg-gradient-to-r ${event.color} relative`}
-                              animate={{ 
-                                boxShadow: ["0 0 0px rgba(0, 191, 255, 0.2)", "0 0 10px rgba(0, 191, 255, 0.8)", "0 0 0px rgba(0, 191, 255, 0.2)"],
-                                scale: [1, 1.2, 1]
-                              }}
-                              transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
-                            >
-                              {/* Inner dot */}
-                              <motion.div 
-                                className="absolute inset-1 rounded-full bg-white" 
-                                animate={{ opacity: [0.4, 1, 0.4] }}
-                                transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
-                              />
-                            </motion.div>
-                            
-                            <motion.div 
-                              className={`w-3 h-3 rounded-full bg-gradient-to-r ${event.color} relative`}
-                              animate={{ 
-                                boxShadow: ["0 0 0px rgba(0, 191, 255, 0.2)", "0 0 8px rgba(0, 191, 255, 0.8)", "0 0 0px rgba(0, 191, 255, 0.2)"],
-                                scale: [1, 1.3, 1]
-                              }}
-                              transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
-                            >
-                              {/* Inner dot */}
-                              <motion.div 
-                                className="absolute inset-1 rounded-full bg-white" 
-                                animate={{ opacity: [0.4, 0.8, 0.4] }}
-                                transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
-                              />
-                            </motion.div>
+                        {/* Card content */}
+                        <div className="p-5">
+                          {/* Icon circle - Positioned slightly above, overlapping the header */}
+                          <div className="absolute -top-5 right-5 w-12 h-12 rounded-full border-4 border-[#0a192f] bg-gradient-to-br from-[#051630] to-[#0a192f] flex items-center justify-center shadow-lg transform -translate-y-1/3">
+                            <div className={`w-full h-full rounded-full bg-gradient-to-br ${event.color} flex items-center justify-center`}>
+                              {event.icon}
+                            </div>
                           </div>
-                        )}
-                      </div>
+                          
+                          <h4 className="text-xl font-poppins font-bold mb-1 mt-1 text-white">{event.title}</h4>
+                          <p className={`${event.textColor} text-sm mb-4 font-medium`}>{event.subtitle}</p>
+                          
+                          {/* Display truncated description with better visibility */}
+                          <div className="text-white text-sm h-20 overflow-hidden">
+                            {event.description.length > 100 
+                              ? event.description.substring(0, 100) + "..."
+                              : event.description
+                            }
+                          </div>
+                        </div>
+                      </motion.div>
                     </motion.div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Enhanced wave connector line under cards */}
-            <div className="absolute top-[45%] left-0 w-full transform -translate-y-1/2 z-0">
-              {/* Main wave path */}
-              <svg 
-                width="100%" 
-                height="50" 
-                className="stroke-[#00bfff] fill-none stroke-2 opacity-60" 
-                viewBox="0 0 1200 50" 
-                preserveAspectRatio="none"
-              >
-                {/* Glowing filter */}
-                <defs>
-                  <filter id="timeline-glow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="2" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                  </filter>
-                </defs>
-                
-                {/* Background glow effect */}
-                <path 
-                  d="M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25" 
-                  stroke="#00bfff"
-                  strokeWidth="4"
-                  strokeOpacity="0.2"
-                  filter="url(#timeline-glow)"
-                >
-                  <animate 
-                    attributeName="d" 
-                    dur="15s"
-                    repeatCount="indefinite"
-                    values="
-                      M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25;
-                      M0,25 C250,0 350,50 600,25 C850,0 950,50 1200,25;
-                      M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25
-                    "
-                  />
-                </path>
-                
-                {/* Dotted line */}
-                <path 
-                  d="M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25" 
-                  strokeDasharray="6,12" 
-                  strokeLinecap="round"
-                  strokeWidth="2.5"
-                >
-                  <animate 
-                    attributeName="d" 
-                    dur="15s"
-                    repeatCount="indefinite"
-                    values="
-                      M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25;
-                      M0,25 C250,0 350,50 600,25 C850,0 950,50 1200,25;
-                      M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25
-                    "
-                  />
-                  <animate
-                    attributeName="stroke-dashoffset"
-                    from="0"
-                    to="36"
-                    dur="2s"
-                    repeatCount="indefinite"
-                  />
-                </path>
-                
-                {/* Animated dots along the path */}
-                <g>
-                  {[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map((position, idx) => (
-                    <circle 
-                      key={idx}
-                      r="4" 
-                      fill="#00bfff" 
-                      opacity="0.8"
-                      filter="url(#timeline-glow)"
-                    >
-                      <animateMotion
-                        path="M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25"
-                        dur={`${8 + (idx % 3)}s`}
-                        begin={`${idx * 0.5}s`}
-                        repeatCount="indefinite"
-                        rotate="auto"
-                      >
-                        <mpath xlinkHref="#motion-path" />
-                      </animateMotion>
-                      <animate
-                        attributeName="r"
-                        values="3;5;3"
-                        dur="3s"
-                        repeatCount="indefinite"
-                        begin={`${idx * 0.3}s`}
-                      />
-                      <animate
-                        attributeName="opacity"
-                        values="0.6;1;0.6"
-                        dur="3s"
-                        repeatCount="indefinite"
-                        begin={`${idx * 0.3}s`}
-                      />
-                    </circle>
                   ))}
-                </g>
-                
-                {/* Path for motion animation */}
-                <path 
-                  id="motion-path"
-                  d="M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25" 
-                  stroke="none"
-                  fill="none"
+                </div>
+              </ScrollArea>
+              
+              {/* Enhanced wave connector line under cards */}
+              <div className="absolute top-[45%] left-0 w-full transform -translate-y-1/2 z-0">
+                {/* Main wave path */}
+                <svg 
+                  width="100%" 
+                  height="50" 
+                  className="stroke-[#00bfff] fill-none stroke-2 opacity-60" 
+                  viewBox="0 0 1200 50" 
+                  preserveAspectRatio="none"
                 >
-                  <animate 
-                    attributeName="d" 
-                    dur="15s"
-                    repeatCount="indefinite"
-                    values="
-                      M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25;
-                      M0,25 C250,0 350,50 600,25 C850,0 950,50 1200,25;
-                      M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25
-                    "
-                  />
-                </path>
-              </svg>
+                  {/* Glowing filter */}
+                  <defs>
+                    <filter id="timeline-glow" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur stdDeviation="2" result="blur" />
+                      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                  </defs>
+                  
+                  {/* Background glow effect */}
+                  <path 
+                    d="M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25" 
+                    stroke="#00bfff"
+                    strokeWidth="4"
+                    strokeOpacity="0.2"
+                    filter="url(#timeline-glow)"
+                  >
+                    <animate 
+                      attributeName="d" 
+                      dur="15s"
+                      repeatCount="indefinite"
+                      values="
+                        M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25;
+                        M0,25 C250,0 350,50 600,25 C850,0 950,50 1200,25;
+                        M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25
+                      "
+                    />
+                  </path>
+                  
+                  {/* Dotted line */}
+                  <path 
+                    d="M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25" 
+                    strokeDasharray="6,12" 
+                    strokeLinecap="round"
+                    strokeWidth="2.5"
+                  >
+                    <animate 
+                      attributeName="d" 
+                      dur="15s"
+                      repeatCount="indefinite"
+                      values="
+                        M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25;
+                        M0,25 C250,0 350,50 600,25 C850,0 950,50 1200,25;
+                        M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25
+                      "
+                    />
+                    <animate
+                      attributeName="stroke-dashoffset"
+                      from="0"
+                      to="36"
+                      dur="2s"
+                      repeatCount="indefinite"
+                    />
+                  </path>
+                  
+                  {/* Animated dots along the path */}
+                  <g>
+                    {[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map((position, idx) => (
+                      <circle 
+                        key={idx}
+                        r="4" 
+                        fill="#00bfff" 
+                        opacity="0.8"
+                        filter="url(#timeline-glow)"
+                      >
+                        <animateMotion
+                          path="M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25"
+                          dur={`${8 + (idx % 3)}s`}
+                          begin={`${idx * 0.5}s`}
+                          repeatCount="indefinite"
+                          rotate="auto"
+                        >
+                          <mpath xlinkHref="#motion-path" />
+                        </animateMotion>
+                        <animate
+                          attributeName="r"
+                          values="3;5;3"
+                          dur="3s"
+                          repeatCount="indefinite"
+                          begin={`${idx * 0.3}s`}
+                        />
+                        <animate
+                          attributeName="opacity"
+                          values="0.6;1;0.6"
+                          dur="3s"
+                          repeatCount="indefinite"
+                          begin={`${idx * 0.3}s`}
+                        />
+                      </circle>
+                    ))}
+                  </g>
+                  
+                  {/* Path for motion animation */}
+                  <path 
+                    id="motion-path"
+                    d="M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25" 
+                    stroke="none"
+                    fill="none"
+                  >
+                    <animate 
+                      attributeName="d" 
+                      dur="15s"
+                      repeatCount="indefinite"
+                      values="
+                        M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25;
+                        M0,25 C250,0 350,50 600,25 C850,0 950,50 1200,25;
+                        M0,25 C250,50 350,0 600,25 C850,50 950,0 1200,25
+                      "
+                    />
+                  </path>
+                </svg>
+              </div>
             </div>
           </div>
           
@@ -381,7 +338,7 @@ export default function TimelineSection() {
                         {/* Timeline node */}
                         <div className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${event.color} flex-shrink-0 flex items-center justify-center shadow-lg`}>
                           <div className="absolute inset-0 rounded-2xl bg-[#0a192f] opacity-80"></div>
-                          <div className={`relative text-5xl font-bold ${event.textColor}`}>
+                          <div className={`relative text-5xl font-bold text-white`}>
                             {`0${index + 1}`}
                           </div>
                           
@@ -392,7 +349,11 @@ export default function TimelineSection() {
                         </div>
                         
                         <div>
-                          <div className={`text-2xl font-poppins font-bold ${event.textColor} mb-1`}>{event.year}</div>
+                          <div className={`text-2xl font-poppins font-bold text-white mb-1`}>
+                            <span className="bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent">
+                              {event.year}
+                            </span>
+                          </div>
                           <h4 className="text-2xl font-poppins font-semibold text-white">{event.title}</h4>
                           <p className="text-gray-100">{event.subtitle}</p>
                         </div>
@@ -404,7 +365,7 @@ export default function TimelineSection() {
                           {event.tags.map((tag, tagIndex) => (
                             <span 
                               key={tagIndex} 
-                              className="px-4 py-2 rounded-full backdrop-blur-sm bg-[#0a192f] bg-opacity-50 border border-gray-700 text-sm flex items-center gap-2 transition-all group-hover:translate-y-0 translate-y-0 shadow-lg text-gray-100"
+                              className="px-4 py-2 rounded-full backdrop-blur-sm bg-[#0a192f] bg-opacity-50 border border-gray-700 text-sm flex items-center gap-2 transition-all group-hover:translate-y-0 translate-y-0 shadow-lg text-white"
                               style={{ transitionDelay: `${tagIndex * 100}ms` }}
                             >
                               <span className={`w-6 h-6 rounded-full ${event.bgColor} bg-opacity-20 flex items-center justify-center`}>
@@ -424,7 +385,7 @@ export default function TimelineSection() {
                     <div className="md:col-span-3 space-y-8">
                       {/* Description with styled paragraph */}
                       <div>
-                        <p className="text-gray-100 leading-relaxed relative">
+                        <p className="text-white leading-relaxed relative text-base">
                           <span className={`absolute -left-4 top-0 w-1 h-full ${event.bgColor} rounded-full opacity-70`}></span>
                           {event.description}
                         </p>
@@ -434,8 +395,8 @@ export default function TimelineSection() {
                       {event.achievements && (
                         <div className="bg-[#051630] bg-opacity-50 p-6 rounded-xl border border-gray-800">
                           <h5 className="text-lg font-poppins font-semibold mb-4 text-white flex items-center gap-2">
-                            <Award className={`w-5 h-5 ${event.textColor}`} /> 
-                            <span className={`${event.textColor}`}>Key Achievements</span>
+                            <Award className={`w-5 h-5 text-white`} /> 
+                            <span className="text-white">Key Achievements</span>
                           </h5>
                           
                           <div className="grid grid-cols-1 gap-4">
@@ -597,7 +558,7 @@ export default function TimelineSection() {
                         {event.icon}
                       </div>
                       
-                      {/* Animated ring - Fixed error by using borderColor opacity instead of borderOpacity */}
+                      {/* Animated ring */}
                       <motion.div 
                         className="absolute inset-0 rounded-full border-2 border-[#00bfff]"
                         animate={{ 
@@ -619,11 +580,11 @@ export default function TimelineSection() {
                     whileHover={{ x: 5 }}
                   >
                     <div>
-                      <div className={`text-lg font-poppins font-bold bg-gradient-to-r ${event.color} bg-clip-text text-transparent mb-2`}>
+                      <div className="text-lg font-poppins font-bold text-white mb-2">
                         {event.year}
                       </div>
                       <h4 className="text-lg font-poppins font-semibold mb-2 text-white">{event.title}</h4>
-                      <p className="text-gray-100 text-sm">{event.subtitle}</p>
+                      <p className="text-white text-sm">{event.subtitle}</p>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -659,7 +620,7 @@ export default function TimelineSection() {
                   {event.tags && (
                     <div className="flex flex-wrap gap-2 mb-4">
                       {event.tags.map((tag, tagIndex) => (
-                        <span key={tagIndex} className="px-3 py-1 bg-[#00bfff] bg-opacity-10 rounded-full text-sm flex items-center gap-1 text-gray-100">
+                        <span key={tagIndex} className="px-3 py-1 bg-[#00bfff] bg-opacity-10 rounded-full text-sm flex items-center gap-1 text-white">
                           {skillIcons[tag]}
                           {tag}
                         </span>
@@ -667,7 +628,7 @@ export default function TimelineSection() {
                     </div>
                   )}
                   
-                  <p className="text-gray-100 mb-6 text-sm">{event.description}</p>
+                  <p className="text-white mb-6 text-sm">{event.description}</p>
                   
                   {/* Achievements with icons */}
                   {event.achievements && (
