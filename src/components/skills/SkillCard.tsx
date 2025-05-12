@@ -47,13 +47,13 @@ export function SkillCard({ title, description, color, bgColor, icon, index }: S
           </div>
           
           {/* Title with accent line */}
-          <h5 className="text-xl font-poppins font-semibold mb-2 relative inline-block">
+          <h5 className="text-xl font-poppins font-semibold mb-2 relative inline-block text-white">
             {title}
             <div className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r ${color} group-hover:w-full transition-all duration-500`}></div>
           </h5>
           
           {/* Description */}
-          <p className="text-gray-400 group-hover:text-white transition-all duration-300 mt-auto">
+          <p className="text-gray-200 group-hover:text-white transition-all duration-300 mt-auto">
             {description}
           </p>
         </div>

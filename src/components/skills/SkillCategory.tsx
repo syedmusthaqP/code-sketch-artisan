@@ -37,7 +37,7 @@ export function SkillCategory({ title, skills, connectorAnimationDuration = "15s
       viewport={{ once: true }}
       variants={containerVariants}
     >
-      <h4 className="text-2xl font-poppins font-semibold mb-6 border-l-4 border-[#00bfff] pl-4">
+      <h4 className="text-2xl font-poppins font-semibold mb-6 border-l-4 border-[#00bfff] pl-4 text-white">
         {title}
       </h4>
       

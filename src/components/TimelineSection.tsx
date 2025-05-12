@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { 
   Briefcase, 
@@ -171,8 +170,8 @@ export default function TimelineSection() {
                           </div>
                         </div>
                         
-                        <h4 className="text-xl font-poppins font-bold mb-1 mt-1">{event.title}</h4>
-                        <p className={`${event.textColor} text-sm mb-4`}>{event.subtitle}</p>
+                        <h4 className="text-xl font-poppins font-bold mb-1 mt-1 text-white">{event.title}</h4>
+                        <p className={`${event.textColor} text-sm mb-4 font-medium`}>{event.subtitle}</p>
                         
                         {/* Enhanced visual connector dots between cards */}
                         {index < timelineEvents.length - 1 && (
@@ -235,7 +234,7 @@ export default function TimelineSection() {
               </div>
             </div>
             
-            {/* Enhanced wave connector line under cards - SVG wave pattern with animated dots */}
+            {/* Enhanced wave connector line under cards */}
             <div className="absolute top-[45%] left-0 w-full transform -translate-y-1/2 z-0">
               {/* Main wave path */}
               <svg 
@@ -358,7 +357,7 @@ export default function TimelineSection() {
             </div>
           </div>
           
-          {/* Detailed event cards - MODIFIED TO INCLUDE ALL TIMELINE EVENTS */}
+          {/* Detailed event cards - Update text colors for better visibility */}
           <div className="space-y-16 mt-24">
             {timelineEvents.map((event, index) => (
               <motion.div 
@@ -394,8 +393,8 @@ export default function TimelineSection() {
                         
                         <div>
                           <div className={`text-2xl font-poppins font-bold ${event.textColor} mb-1`}>{event.year}</div>
-                          <h4 className="text-2xl font-poppins font-semibold">{event.title}</h4>
-                          <p className="text-gray-300">{event.subtitle}</p>
+                          <h4 className="text-2xl font-poppins font-semibold text-white">{event.title}</h4>
+                          <p className="text-gray-100">{event.subtitle}</p>
                         </div>
                       </div>
                       
@@ -405,7 +404,7 @@ export default function TimelineSection() {
                           {event.tags.map((tag, tagIndex) => (
                             <span 
                               key={tagIndex} 
-                              className="px-4 py-2 rounded-full backdrop-blur-sm bg-[#0a192f] bg-opacity-50 border border-gray-800 text-sm flex items-center gap-2 transition-all group-hover:translate-y-0 translate-y-0 shadow-lg"
+                              className="px-4 py-2 rounded-full backdrop-blur-sm bg-[#0a192f] bg-opacity-50 border border-gray-700 text-sm flex items-center gap-2 transition-all group-hover:translate-y-0 translate-y-0 shadow-lg text-gray-100"
                               style={{ transitionDelay: `${tagIndex * 100}ms` }}
                             >
                               <span className={`w-6 h-6 rounded-full ${event.bgColor} bg-opacity-20 flex items-center justify-center`}>
@@ -425,7 +424,7 @@ export default function TimelineSection() {
                     <div className="md:col-span-3 space-y-8">
                       {/* Description with styled paragraph */}
                       <div>
-                        <p className="text-gray-300 leading-relaxed relative">
+                        <p className="text-gray-100 leading-relaxed relative">
                           <span className={`absolute -left-4 top-0 w-1 h-full ${event.bgColor} rounded-full opacity-70`}></span>
                           {event.description}
                         </p>
@@ -452,7 +451,7 @@ export default function TimelineSection() {
                                 <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${event.color} bg-opacity-10 flex-shrink-0 flex items-center justify-center mt-0.5 group-hover:scale-110 transition-transform duration-300`}>
                                   <ArrowRight className="w-4 h-4 text-white" />
                                 </div>
-                                <p className="text-gray-200">{achievement}</p>
+                                <p className="text-white">{achievement}</p>
                               </motion.div>
                             ))}
                           </div>
@@ -466,7 +465,7 @@ export default function TimelineSection() {
           </div>
         </div>
         
-        {/* Mobile Timeline */}
+        {/* Mobile Timeline - Enhance text visibility */}
         <div className="md:hidden max-w-sm mx-auto">
           <div className="relative">
             {/* Enhanced vertical timeline line with animation effects */}
@@ -623,8 +622,8 @@ export default function TimelineSection() {
                       <div className={`text-lg font-poppins font-bold bg-gradient-to-r ${event.color} bg-clip-text text-transparent mb-2`}>
                         {event.year}
                       </div>
-                      <h4 className="text-lg font-poppins font-semibold mb-2">{event.title}</h4>
-                      <p className="text-gray-300 text-sm">{event.subtitle}</p>
+                      <h4 className="text-lg font-poppins font-semibold mb-2 text-white">{event.title}</h4>
+                      <p className="text-gray-100 text-sm">{event.subtitle}</p>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -632,7 +631,7 @@ export default function TimelineSection() {
             </div>
           </div>
           
-          {/* Mobile detailed cards - MODIFIED TO SHOW ALL EVENTS */}
+          {/* Mobile detailed cards with improved visibility */}
           <div className="mt-16 space-y-12">
             {timelineEvents.map((event, index) => (
               <motion.div 
@@ -652,7 +651,7 @@ export default function TimelineSection() {
                       {event.icon}
                     </div>
                   </div>
-                  <p className="text-white text-opacity-80 text-sm mt-1">{event.year} - {event.subtitle}</p>
+                  <p className="text-white text-opacity-90 text-sm mt-1">{event.year} - {event.subtitle}</p>
                 </div>
                 
                 <div className="p-5">
@@ -660,7 +659,7 @@ export default function TimelineSection() {
                   {event.tags && (
                     <div className="flex flex-wrap gap-2 mb-4">
                       {event.tags.map((tag, tagIndex) => (
-                        <span key={tagIndex} className="px-3 py-1 bg-[#00bfff] bg-opacity-10 rounded-full text-sm flex items-center gap-1">
+                        <span key={tagIndex} className="px-3 py-1 bg-[#00bfff] bg-opacity-10 rounded-full text-sm flex items-center gap-1 text-gray-100">
                           {skillIcons[tag]}
                           {tag}
                         </span>
@@ -668,7 +667,7 @@ export default function TimelineSection() {
                     </div>
                   )}
                   
-                  <p className="text-gray-300 mb-6 text-sm">{event.description}</p>
+                  <p className="text-gray-100 mb-6 text-sm">{event.description}</p>
                   
                   {/* Achievements with icons */}
                   {event.achievements && (
@@ -689,7 +688,7 @@ export default function TimelineSection() {
                             <div className="w-5 h-5 rounded-full bg-[#00bfff] bg-opacity-20 flex-shrink-0 flex items-center justify-center mt-0.5">
                               {achievementIcon}
                             </div>
-                            <p className="text-gray-200 text-sm">{achievement}</p>
+                            <p className="text-white text-sm">{achievement}</p>
                           </motion.div>
                         ))}
                       </div>
@@ -704,4 +703,3 @@ export default function TimelineSection() {
     </section>
   );
 }
-
