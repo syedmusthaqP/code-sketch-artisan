@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { scrollToSection } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
+import { GradientText } from '@/components/ui/gradient-text';
 
 const navLinks = [
   { label: 'About', href: 'about' },
@@ -37,8 +38,13 @@ export function Navbar({ activeSection }: NavbarProps) {
       isScrolled ? "bg-[rgba(5,21,39,0.90)] backdrop-blur-md py-3" : "bg-transparent py-4"
     )}>
       <nav className="container mx-auto flex items-center justify-between px-6">
-        {/* Logo - Removed since it's in the hero section */}
-        <div></div>
+        {/* Logo with name - "Syed" in blue and "Musthaq" in white */}
+        <div className="flex items-center">
+          <h3 className="text-xl font-bold">
+            <span className="text-[#00bfff]">Syed</span>
+            <span className="text-white"> Musthaq</span>
+          </h3>
+        </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-8">
