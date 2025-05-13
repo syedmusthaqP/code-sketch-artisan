@@ -12,7 +12,6 @@ import {
   ArrowRight
 } from "lucide-react";
 import SectionHeader from "./SectionHeader";
-import { ScrollArea } from "./ui/scroll-area";
 
 // Define the type for skill icons to prevent type errors
 type SkillIconsType = {
@@ -131,14 +130,14 @@ export default function TimelineSection() {
           accent="teal"
         />
         
-        {/* Desktop Timeline - Enhanced visibility with ScrollArea for horizonal timeline */}
+        {/* Desktop Timeline - Full visible layout without scroll */}
         <div className="hidden md:block max-w-6xl mx-auto">
           {/* Cards in a row with connector lines */}
           <div className="relative pb-12">
             {/* Main timeline row */}
             <div className="relative mb-10">
-              <ScrollArea className="w-full" orientation="horizontal">
-                <div className="flex px-4 space-x-6 md:space-x-12 lg:space-x-16 py-8 min-w-max">
+              <div className="w-full">
+                <div className="flex justify-between py-8 w-full">
                   {timelineEvents.map((event, index) => (
                     <motion.div 
                       key={index}
@@ -150,7 +149,7 @@ export default function TimelineSection() {
                     >
                       {/* Card */}
                       <motion.div 
-                        className={`relative w-72 rounded-lg shadow-lg bg-[#0a192f] border border-gray-800 overflow-hidden transform transition-all duration-300`}
+                        className={`relative w-[180px] rounded-lg shadow-lg bg-[#0a192f] border border-gray-800 overflow-hidden transform transition-all duration-300`}
                         whileHover={{ 
                           y: -5, 
                           boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2)",
@@ -158,37 +157,29 @@ export default function TimelineSection() {
                         }}
                       >
                         {/* Card header */}
-                        <div className={`px-5 py-3 bg-gradient-to-r ${event.color}`}>
-                          <h4 className="text-xl font-poppins font-bold text-white mb-0 leading-tight tracking-wider">
+                        <div className={`px-4 py-3 bg-gradient-to-r ${event.color}`}>
+                          <h4 className="text-lg font-poppins font-bold text-white mb-0 leading-tight tracking-wider">
                             {event.year}
                           </h4>
                         </div>
                         
                         {/* Card content */}
-                        <div className="p-5">
+                        <div className="p-4">
                           {/* Icon circle - Positioned slightly above, overlapping the header */}
-                          <div className="absolute -top-5 right-5 w-12 h-12 rounded-full border-4 border-[#0a192f] bg-gradient-to-br from-[#051630] to-[#0a192f] flex items-center justify-center shadow-lg transform -translate-y-1/3">
+                          <div className="absolute -top-5 right-4 w-10 h-10 rounded-full border-4 border-[#0a192f] bg-gradient-to-br from-[#051630] to-[#0a192f] flex items-center justify-center shadow-lg transform -translate-y-1/3">
                             <div className={`w-full h-full rounded-full bg-gradient-to-br ${event.color} flex items-center justify-center`}>
                               {event.icon}
                             </div>
                           </div>
                           
-                          <h4 className="text-xl font-poppins font-bold mb-1 mt-1 text-white">{event.title}</h4>
-                          <p className={`${event.textColor} text-sm mb-4 font-medium`}>{event.subtitle}</p>
-                          
-                          {/* Display truncated description with better visibility */}
-                          <div className="text-white text-sm h-20 overflow-hidden">
-                            {event.description.length > 100 
-                              ? event.description.substring(0, 100) + "..."
-                              : event.description
-                            }
-                          </div>
+                          <h4 className="text-base font-poppins font-bold mb-1 mt-1 text-white leading-tight">{event.title}</h4>
+                          <p className={`${event.textColor} text-xs mb-2 font-medium`}>{event.subtitle}</p>
                         </div>
                       </motion.div>
                     </motion.div>
                   ))}
                 </div>
-              </ScrollArea>
+              </div>
               
               {/* Enhanced wave connector line under cards */}
               <div className="absolute top-[45%] left-0 w-full transform -translate-y-1/2 z-0">
