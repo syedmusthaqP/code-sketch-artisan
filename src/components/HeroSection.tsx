@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { scrollToSection } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -6,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import Typed from '@/lib/typed';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { GradientText } from './ui/gradient-text';
+import { Link } from 'react-router-dom';
 
 export default function HeroSection() {
   const typedRef = useRef<HTMLSpanElement>(null);
@@ -40,13 +42,9 @@ export default function HeroSection() {
     };
   }, []);
   
-  // For name underline animation
+  // For name underline animation - modified to be continuous motion
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setUnderlineWidth(100);
-    }, 1000);
-    
-    return () => clearTimeout(timer);
+    setUnderlineWidth(100); // Initial full width
   }, []);
   
   // Circuit animation for background
@@ -171,25 +169,33 @@ export default function HeroSection() {
               &lt;/&gt; <span className="text-[#0ea5e9]">Hello, I'm</span>
             </motion.div>
             
-            {/* Name with enhanced effects */}
+            {/* Name with REDUCED gradient effects */}
             <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#00c3ff]/30 to-[#c961de]/30 blur-lg opacity-50"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#00c3ff]/20 to-[#c961de]/20 blur-lg opacity-40"></div>
               <h1 className="relative text-6xl md:text-7xl lg:text-8xl font-bold mb-2 mt-0">
-                <span className="text-white drop-shadow-[0_0_10px_rgba(0,195,255,0.3)]">Syed</span> 
-                <span className="bg-gradient-to-r from-[#00c3ff] via-[#4f8efc] to-[#c961de] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(0,195,255,0.3)]">Musthaq</span>
+                <span className="text-white drop-shadow-[0_0_5px_rgba(0,195,255,0.2)]">Syed</span> 
+                <span className="bg-gradient-to-r from-[#00c3ff] via-[#4f8efc] to-[#c961de] bg-clip-text text-transparent drop-shadow-[0_0_5px_rgba(0,195,255,0.2)]">Musthaq</span>
               </h1>
               
-              {/* Animated underline for name with enhanced glow */}
+              {/* Animated underline for name with continuous motion */}
               <motion.div 
                 className="h-1 bg-gradient-to-r from-[#00c3ff] to-[#c961de] mt-1 relative"
-                initial={{ width: "0%" }}
-                animate={{ width: `${underlineWidth}%` }}
-                transition={{ duration: 1, ease: "easeInOut" }}
-                style={{ boxShadow: "0 0 10px rgba(0, 195, 255, 0.7)" }}
+                animate={{ 
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity, 
+                  ease: "linear" 
+                }}
+                style={{ 
+                  backgroundSize: "200% 100%",
+                  boxShadow: "0 0 8px rgba(0, 195, 255, 0.5)" 
+                }}
               />
             </div>
             
-            {/* Expert in: section with animated typing and light box */}
+            {/* Expert in: section with animated typing and added emoji */}
             <motion.div 
               className="mt-6 flex items-center h-10 text-lg text-gray-300 mb-6 relative"
               initial={{ opacity: 0, x: -20 }}
@@ -198,6 +204,7 @@ export default function HeroSection() {
             >
               <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#00c3ff]/10 to-[#c961de]/10 blur-md"></div>
               <span className="mr-2 text-white relative">Expert in:</span>
+              <Star className="h-5 w-5 text-[#FFD700] mr-2 animate-pulse" />
               <span className="text-[#00c3ff] font-semibold relative" ref={typedRef}></span>
             </motion.div>
             
@@ -323,7 +330,7 @@ export default function HeroSection() {
                 </Button>
               </motion.div>
               
-              {/* Vision to Impact button - NEW */}
+              {/* Vision to Impact button - Updated to use Link to Vision page */}
               <motion.div 
                 variants={buttonVariants} 
                 whileHover="hover"
@@ -331,7 +338,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.85 }}
               >
-                <a href="/vision">
+                <Link to="/vision">
                   <Button 
                     className="px-6 py-6 bg-gradient-to-r from-[#4f8efc] to-[#00c3ff] rounded-md text-white flex items-center 
                               relative overflow-hidden font-medium hover:opacity-90 transition-opacity border-0
@@ -349,7 +356,7 @@ export default function HeroSection() {
                       }}
                     />
                   </Button>
-                </a>
+                </Link>
               </motion.div>
               
               <motion.div 
@@ -372,27 +379,38 @@ export default function HeroSection() {
               </motion.div>
             </div>
             
-            {/* Explore More with enhanced animation */}
-            <div className="mt-16 flex justify-center items-center text-[#00c3ff] text-sm relative">
+            {/* Redesigned and centered Explore More */}
+            <div className="mt-16 flex flex-col items-center justify-center">
               <motion.div
-                className="absolute -inset-2 rounded-full bg-[#00c3ff]/10 blur-md"
-                animate={{ 
-                  opacity: [0.1, 0.3, 0.1],
-                  scale: [0.9, 1.1, 0.9],
-                  transition: { duration: 3, repeat: Infinity, repeatType: "reverse" }
-                }}
-              />
-              <span className="relative">Explore More</span>
-              <motion.div
-                className="mt-2 flex justify-center relative"
-                animate={{ 
-                  y: [0, 8, 0],
-                  transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
-                }}
+                className="relative px-8 py-4 rounded-full bg-gradient-to-r from-[#052037]/90 to-[#0a1929]/90 border border-[#00c3ff]/30"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1 }}
+                whileHover={{ scale: 1.05 }}
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
+                <motion.div
+                  className="absolute -inset-1 bg-gradient-to-r from-[#00c3ff]/20 to-[#c961de]/20 rounded-full blur-md z-0"
+                  animate={{ 
+                    opacity: [0.3, 0.6, 0.3],
+                    scale: [0.95, 1.05, 0.95],
+                    transition: { duration: 3, repeat: Infinity }
+                  }}
+                />
+                <div className="relative flex flex-col items-center">
+                  <span className="text-[#00c3ff] font-medium mb-1">Explore More</span>
+                  
+                  <motion.div
+                    className="flex justify-center"
+                    animate={{ 
+                      y: [0, 6, 0],
+                      transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+                    }}
+                  >
+                    <svg className="w-5 h-5 text-[#00c3ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                  </motion.div>
+                </div>
               </motion.div>
             </div>
           </motion.div>
