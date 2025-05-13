@@ -8,6 +8,7 @@ import TimelineSection from "@/components/TimelineSection";
 import SkillsSection from "@/components/SkillsSection";
 import { motion } from "framer-motion";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import InnovationSection from "@/components/InnovationSection";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -49,6 +50,7 @@ const Index = () => {
       <AboutSection />
       <SkillsSection />
       <TimelineSection />
+      <InnovationSection />
       <TestimonialsSection />
       <ContactSection />
     </motion.div>
