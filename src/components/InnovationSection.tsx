@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import SectionHeader from "./SectionHeader";
-import { Robot, FileText, Handshake, Rocket } from "lucide-react";
+import { Bot, FileText, Handshake, Rocket } from "lucide-react";
 
 export default function InnovationSection() {
   // Set up counter animation refs and logic
@@ -41,7 +41,7 @@ export default function InnovationSection() {
   const impacts = [
     {
       title: "AI-Driven Productivity",
-      icon: <Robot className="text-[#00bfff] w-8 h-8" />,
+      icon: <Bot className="text-[#00bfff] w-8 h-8" />,
       description: "Implemented AI automation solutions that cut over 100 hours per month of manual work across departments, allowing teams to focus on strategic initiatives rather than repetitive tasks."
     },
     {
