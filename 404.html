@@ -11,9 +11,9 @@
     // to the new URL with only a query string and hash fragment.
     // This is necessary for Single Page Apps that use client-side routing.
     
-    // Get the repository name from the URL
+    // Hard-code the repository name for this project
     var pathSegmentsToKeep = 1;
-    var repo = location.pathname.split('/')[1];
+    var repo = 'code-sketch-artisan';
     
     var l = window.location;
     l.replace(
