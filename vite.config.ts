@@ -7,7 +7,7 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   // Set the base path to match your GitHub repository name
-  base: '/code-sketch-artisan/',  // This makes assets load correctly on GitHub Pages
+  base: './',  // Using relative path for more reliable asset loading
   server: {
     host: "::",
     port: 8080,
