@@ -466,7 +466,7 @@ export default function HeroSection() {
                       {/* Profile image with gradient overlay */}
                       <div className="relative h-full rounded-xl overflow-hidden">
                         <img 
-                          src="/lovable-uploads/dece566b-b408-4aec-b9e0-0ecec84de7fb.png" 
+                          src="/syed-profile.jpg" 
                           alt="Syed Musthaq" 
                           className="w-full h-full object-cover object-center"
                         />
