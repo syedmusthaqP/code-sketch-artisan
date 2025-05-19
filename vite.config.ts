@@ -1,6 +1,5 @@
-// @ts-nocheck
-/* This file is intentionally marked with @ts-nocheck to suppress TypeScript errors
-   These errors are only in the configuration file and don't affect the application code */
+// This configuration file might have TypeScript errors that don't affect the application
+// We'll properly type everything to avoid using @ts-nocheck
 
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";

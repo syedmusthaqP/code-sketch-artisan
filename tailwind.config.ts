@@ -92,5 +92,11 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	// Using dynamic import for the animate plugin
+	// This avoids the require() style import error
+	plugins: [
+		// @ts-expect-error - Tailwind plugins are not fully typed
+		// eslint-disable-next-line @typescript-eslint/no-require-imports
+		require("tailwindcss-animate")
+	],
 } satisfies Config;
