@@ -6,8 +6,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Dynamically set the base path based on environment
-  base: mode === 'production' ? './' : '/',  // This makes assets load correctly on GitHub Pages
+  // Set the base path to match your GitHub repository name
+  base: '/code-sketch-artisan/',  // This makes assets load correctly on GitHub Pages
   server: {
     host: "::",
     port: 8080,
